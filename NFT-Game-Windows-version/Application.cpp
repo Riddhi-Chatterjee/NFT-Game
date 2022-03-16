@@ -172,7 +172,7 @@ void Application::update(double delta_time)
 
     for (auto o : enemies) {
         if (ph.detectCollision(*o, *hk)) {
-            std::cout << "collided" << std::endl;
+            //std::cout << "collided" << std::endl;
             ph.collisionHandler(*hk, *o);
             hk->reduceHealth();
             if (hk->vel.y > 2 || hk->vel.y < -2) {

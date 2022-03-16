@@ -115,7 +115,7 @@ double Physics::update(double dt, std::vector<Object*> obj, Object* hk, std::vec
 
 	for (auto o : obj) {
 		if (detectCollision(*o, *hk)) {
-			std::cout << "collided" << std::endl;
+			//std::cout << "collided" << std::endl;
 			collisionHandler(*hk, *o);
 		}
 	}
@@ -123,7 +123,7 @@ double Physics::update(double dt, std::vector<Object*> obj, Object* hk, std::vec
 	for (auto e : enemies) {
 		for (auto o : obj) {
 			if (detectCollision(*e, *o)) {
-				std::cout << "Collided" << std::endl;
+				//std::cout << "Collided" << std::endl;
 				collisionHandler(*e, *o);
 
 			}
