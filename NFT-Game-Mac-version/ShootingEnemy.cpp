@@ -20,17 +20,28 @@ ShootingEnemy::ShootingEnemy(Vec2D Epos, Object *Target)
 
 void ShootingEnemy::update(double delta_time)
 {
-    std::vector<Object *>::iterator it;
-    it = fires.begin();
     int i;
+    int weaponNum = 2;
+    srand(time(0));
     for(i=0;i<fires.size();i++)
     {
         if(fires[i])
         {
             int result;
-            if(dynamic_cast<CannonFire*> (fires[i]))
+            int weapon = fires[i]->getWeaponType();
+            if(weapon == CANNON_FIRE)
             {
-                result = dynamic_cast<CannonFire *> (fires[i])->fire(delta_time);
+                if(dynamic_cast<CannonFire *> (fires[i]))
+                {
+                    result = dynamic_cast<CannonFire *> (fires[i])->fire(delta_time);
+                }
+            }
+            else if(weapon == FIRE_BALL)
+            {
+                if(dynamic_cast<Fireball *> (fires[i]))
+                {
+                    result = dynamic_cast<Fireball *> (fires[i])->fire(delta_time);
+                }
             }
             if(result == 0)
             {
@@ -49,7 +60,19 @@ void ShootingEnemy::update(double delta_time)
         double mag = sqrt((shootingDir.x * shootingDir.x)+(shootingDir.y * shootingDir.y));
         if(mag <= 300)
         {
-            fires.push_back(new CannonFire(this->pos, {(shootingDir.x/mag)*30, (shootingDir.y/mag)*30}));
+            int randNum = rand()%weaponNum;
+            if(randNum == 0)
+            {
+                Object *o = (Object *)new CannonFire(this->pos, {(shootingDir.x/mag)*30, (shootingDir.y/mag)*30});
+                o->setWeaponType(CANNON_FIRE);
+                fires.push_back(o);
+            }
+            else if(randNum == 1)
+            {
+                Object *o = (Object *)new Fireball(this->pos, {(shootingDir.x/mag)*30, (shootingDir.y/mag)*30});
+                o->setWeaponType(FIRE_BALL);
+                fires.push_back(o);
+            }
         }
     }
 }
@@ -103,7 +126,7 @@ void ShootingEnemy::collideFireBalls(HollowKnight* hk, Physics& p, std::vector<O
             if (p.detectCollision(*hk, **it)) {
                 if(*it)
                 {
-                    (dynamic_cast<CannonFire*> (*it))->informCollision();
+                    (*it)->informCollision();
                 }
                 hk->reduceHealth();
                 break;

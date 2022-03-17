@@ -26,10 +26,12 @@ private:
 	double e;
 	double length, bredth;
 	double invMass;
+	int weaponType;
 
 public:
 	Vec2D pos; // Position of the centre
 	Vec2D vel;
+	bool collided;
 
 	Object(Vec2D pos, Vec2D vel, double e, double length, double breadth, double mass);
 	virtual ~Object() {}
@@ -49,6 +51,10 @@ public:
 	double getBredth() const { return bredth; };
 	double getInvMass() const { return invMass; }
 	void setVel(Vec2D v) { vel = vel + v; }
+	void informCollision();
+	void setWeaponType(int iWeaponType);
+	int getWeaponType();
+
 		 
 };
 

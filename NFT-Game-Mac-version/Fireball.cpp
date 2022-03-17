@@ -1,12 +1,12 @@
-#include "CannonFire.h"
+#include "Fireball.h"
 
-CannonFire::CannonFire(Vec2D p, Vec2D v)
-	: propagation("CannonProp.bmp", 1, 4), burst("CannonBurst.bmp", 6, 8), Enemy(p, 0.15, 71, 57, 1, 4)
-{
+Fireball::Fireball(Vec2D p, Vec2D v)
+	: propagation("SpiralProp.bmp", 1, 4), burst("BubbleBurst.bmp", 1, 2), Enemy(p, 0.15, 71, 57, 1, 4)
+    {
     count = 0;
     timepassed = 0.0;
     destroyed = false;
-	propagation.selectSprite(count%8,count/8);
+	propagation.selectSprite(count,0);
     burst.selectSprite(0,0);
     currentSpriteSheet = 0;
     vel.x = v.x;
@@ -18,10 +18,9 @@ CannonFire::CannonFire(Vec2D p, Vec2D v)
 	m_position.y = 0;
 	m_position.w = getLength();
 	m_position.h = getBredth();
-}
+    }
 
-
-int CannonFire::fire(double delta_time)
+int Fireball::fire(double delta_time)
 {
     pos.x = pos.x + (delta_time*vel.x);
     pos.y = pos.y + (delta_time*vel.y);
@@ -46,18 +45,18 @@ int CannonFire::fire(double delta_time)
         }
         else if(currentSpriteSheet == 1)
         {
-            if(timepassed >= 0.05)
+            if(timepassed >= 0.5)
             {
                 timepassed = 0.0;
                 count = (count + 1);
-                if(count == 47)
+                if(count == 2)
                 {
                     destroyed = true;
                     return 0;
                 }
                 else
                 {
-                    burst.selectSprite(count%8,count/8);
+                    burst.selectSprite(count,0);
                 }
             }   
         }
@@ -65,8 +64,7 @@ int CannonFire::fire(double delta_time)
     return 1;
 }
 
-
-void CannonFire::draw(SDL_Surface* surface, int x, int y)
+void Fireball::draw(SDL_Surface* surface, int x, int y)
 {
 	m_position.x = pos.x - getLength();
 	m_position.y = pos.y - getBredth();
@@ -80,6 +78,6 @@ void CannonFire::draw(SDL_Surface* surface, int x, int y)
     }
 }
 
-CannonFire::~CannonFire()
+Fireball::~Fireball()
 {
 }

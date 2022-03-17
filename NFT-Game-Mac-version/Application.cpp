@@ -137,15 +137,6 @@ void Application::update(double delta_time)
     ph.update(delta_time, objs, hk, enemies);
 
     for (auto obj : enemies) {
-        ShootingEnemy* se = dynamic_cast<ShootingEnemy*> (obj);
-        if(se)
-            se->collideFireBalls(hk, ph, objs);
-        
-
-    }
-
-
-    for (auto obj : enemies) {
         if (hk->getAttack()) {
             if (ph.detectCollision(*hk->getAttack(), *obj)) {
                 Enemy* em = dynamic_cast<Enemy*> (obj);
@@ -203,6 +194,12 @@ void Application::update(double delta_time)
     for (auto obj : enemies) {
         obj->update(delta_time);
     }
+
+    for (auto obj : enemies) {
+        ShootingEnemy* se = dynamic_cast<ShootingEnemy*> (obj);
+        if(se)
+            se->collideFireBalls(hk, ph, objs);
+    }
 }
 
 void Application::draw()
@@ -217,7 +214,7 @@ void Application::draw()
             file_out << "Highest Score for the game : "<<hk->getScore()<<std::endl;
             file_out.close();
         }
-        gameOver.moveMap(0, 0);
+        gameOver.moveMap(-220, -145);
         gameOver.drawMap(m_Surface);
         hk->getHealth()->flag=false;
     }

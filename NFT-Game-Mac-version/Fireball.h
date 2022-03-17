@@ -6,10 +6,9 @@
 #include "Physics.h"
 #include "Enemy.h"
 
-class CannonFire : public Enemy
+class Fireball : public Enemy
 {
-
-private:
+    private:
 	Spritesheet propagation, burst;
 	SDL_Rect m_position;
 	double timepassed;
@@ -17,10 +16,10 @@ private:
     Vec2D initialVel;
     int count;
     bool destroyed;
-	
-public:
-	CannonFire(Vec2D p, Vec2D v);
-	~CannonFire();
+
+    public:
+	Fireball(Vec2D p, Vec2D v);
+	~Fireball();
 
 	void update(double delta_time) {}
     int fire(double delta_time);
@@ -29,3 +28,4 @@ public:
 	bool isGravity() override { return false; }
 	bool isCollideable() const { return true; }
 };
+

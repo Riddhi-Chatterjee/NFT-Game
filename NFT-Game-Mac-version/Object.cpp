@@ -30,3 +30,18 @@ std::vector<Vec2D> Object::getPoints() const
 	points.push_back({pos.x - length/2, pos.y - bredth/2});
 	return points;
 }
+
+void Object::informCollision()
+{
+    collided = true;
+}
+
+void Object::setWeaponType(int iWeaponType)
+{
+	weaponType = iWeaponType;
+}
+
+int Object::getWeaponType()
+{
+	return weaponType;
+}

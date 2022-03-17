@@ -3,10 +3,14 @@
 #include "SDL2_image.framework/Headers/SDL_image.h"
 #include "Spritesheet.h"
 #include <iostream>
+#include <time.h>
 #include "Physics.h"
 #include "Health.h"
 #include "CannonFire.h"
+#include "Fireball.h"
 #include "Enemy.h"
+#define CANNON_FIRE 0
+#define FIRE_BALL 1
 
 class ShootingEnemy : public Enemy
 {
