@@ -37,6 +37,11 @@ int CannonFire::fire(double delta_time)
         }
         if(currentSpriteSheet == 0)
         {
+            if(pos.x<0 || pos.x>1080 || pos.y<0 || pos.y>720)
+            {
+                destroyed = true;
+                return 0;
+            }
 	        if(timepassed >= 0.5)
             {
                 timepassed = 0.0;
