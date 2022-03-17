@@ -8,9 +8,11 @@
 #include "Health.h"
 #include "CannonFire.h"
 #include "Fireball.h"
+#include "FlameFire.h"
 #include "Enemy.h"
 #define CANNON_FIRE 0
 #define FIRE_BALL 1
+#define FLAME_FIRE 2
 
 class ShootingEnemy : public Enemy
 {

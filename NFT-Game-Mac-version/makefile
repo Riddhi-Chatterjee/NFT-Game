@@ -1,5 +1,5 @@
-all_sources = Main.cpp Application.cpp Helper.cpp HollowKnight.cpp Physics.cpp Spritesheet.cpp Object.cpp Ledge.cpp Map.cpp Health.cpp SDCounter.cpp NDCounter.cpp CannonFire.cpp Crawlid.cpp Enemy.cpp ShootingEnemy.cpp EnemyController.cpp Attack.cpp Fireball.cpp
-DEPS = Core.h Application.h Helper.h HollowKnight.h Physics.h Spritesheet.h Object.h Ledge.h Map.h Health.h SDCounter.h NDCounter.h CannonFire.h Crawlid.h Enemy.h ShootingEnemy.h EnemyController.h Attack.h Fireball.h
+all_sources = Main.cpp Application.cpp Helper.cpp HollowKnight.cpp Physics.cpp Spritesheet.cpp Object.cpp Ledge.cpp Map.cpp Health.cpp SDCounter.cpp NDCounter.cpp CannonFire.cpp Crawlid.cpp Enemy.cpp ShootingEnemy.cpp EnemyController.cpp Attack.cpp Fireball.cpp FlameFire.cpp
+DEPS = Core.h Application.h Helper.h HollowKnight.h Physics.h Spritesheet.h Object.h Ledge.h Map.h Health.h SDCounter.h NDCounter.h CannonFire.h Crawlid.h Enemy.h ShootingEnemy.h EnemyController.h Attack.h Fireball.h FlameFire.h
 all_objs = $(all_sources:.cpp=.o)
 project : $(all_objs)
 	g++-11 -o project $(all_objs) -F/library/Frameworks -framework SDL2

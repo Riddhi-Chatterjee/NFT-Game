@@ -21,7 +21,7 @@ ShootingEnemy::ShootingEnemy(Vec2D Epos, Object *Target)
 void ShootingEnemy::update(double delta_time)
 {
     int i;
-    int weaponNum = 2;
+    int weaponNum = 3;
     srand(time(0));
     for(i=0;i<fires.size();i++)
     {
@@ -41,6 +41,13 @@ void ShootingEnemy::update(double delta_time)
                 if(dynamic_cast<Fireball *> (fires[i]))
                 {
                     result = dynamic_cast<Fireball *> (fires[i])->fire(delta_time);
+                }
+            }
+            else if(weapon == FLAME_FIRE)
+            {
+                if(dynamic_cast<FlameFire *> (fires[i]))
+                {
+                    result = dynamic_cast<FlameFire *> (fires[i])->fire(delta_time);
                 }
             }
             if(result == 0)
@@ -71,6 +78,12 @@ void ShootingEnemy::update(double delta_time)
             {
                 Object *o = (Object *)new Fireball(this->pos, {(shootingDir.x/mag)*30, (shootingDir.y/mag)*30});
                 o->setWeaponType(FIRE_BALL);
+                fires.push_back(o);
+            }
+            else if(randNum == 2)
+            {
+                Object *o = (Object *)new FlameFire(this->pos, {(shootingDir.x/mag)*30, (shootingDir.y/mag)*30});
+                o->setWeaponType(FLAME_FIRE);
                 fires.push_back(o);
             }
         }
