@@ -17,7 +17,7 @@ public:
 
 	void moveMap(int x, int y);
 	void drawMap(SDL_Surface* surface);
-
+	SDL_Surface *getSurface();
 
 };
 

@@ -34,4 +34,9 @@ void Map::drawMap(SDL_Surface* surface)
 
 }
 
+SDL_Surface * Map::getSurface()
+{
+	return m_map;
+}
+
 
