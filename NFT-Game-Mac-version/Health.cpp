@@ -53,3 +53,14 @@ int Health::getHealth()
 {
 	return currentHealth;
 }
+
+void Health::setCurrentHealth(int currHealth)
+{
+	currentHealth = currHealth;
+	healthDisplay.selectSprite(currentHealth, 0);
+}
+
+void Health::setHealthIncDuration(int duration)
+{
+	autoHealthIncrDuration = duration;
+}

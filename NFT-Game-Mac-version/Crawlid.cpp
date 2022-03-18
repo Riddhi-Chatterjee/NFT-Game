@@ -1,7 +1,7 @@
 #include "Crawlid.h"
 
 Crawlid::Crawlid(Vec2D pos, double length, double bredth)
-	:Enemy(pos, 1, length, bredth, 1, 2), walker("crawlid.bmp", 1, 4), walker_inv("crawlid_inv.bmp", 1, 4)
+	:Enemy(pos, 1, length, bredth, 1, 13), walker("crawlid.bmp", 1, 4), walker_inv("crawlid_inv.bmp", 1, 4)
 {
 	m_Position.x = 0;
 	m_Position.y = 0;

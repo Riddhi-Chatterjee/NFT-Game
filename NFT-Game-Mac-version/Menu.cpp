@@ -15,7 +15,11 @@ Menu::Menu(SDL_Window *window, SDL_Renderer *renderer)
 }
 int Menu::Start()
 {
-    addButton("Start.bmp", 420, 450, 240, 125, '!');
+    bool flag = false;
+    bool isSelected = false;
+
+    addButton("SelectSword.bmp", 50, 50, 300, 150, '!');
+    
     
     while (isRunning)
     {
@@ -36,9 +40,96 @@ int Menu::Start()
             }
             break;
         }
-        if(uit->isPressedStatus(0))
-        {
-            isRunning = false;
+        if(uit->isPressedStatus(0) && !flag)
+        {   
+            flag = true;
+            addButton("TiltedSwords (1).bmp", 50, 250, 73, 100, '!');
+            addButton("TiltedSwords (2).bmp", 143, 250, 73, 100, '!');
+            addButton("TiltedSwords (3).bmp", 236, 250, 73, 100, '!');
+            addButton("TiltedSwords (4).bmp", 329, 250, 73, 100, '!');
+            // addButton("TiltedSwords (13).bmp", 422, 250, 73, 100, '!');
+            // addButton("TiltedSwords (14).bmp", 495, 250, 73, 100, '!');
+            addButton("TiltedSwords (5).bmp", 50, 400, 73, 100, '!');
+            addButton("TiltedSwords (6).bmp", 150, 400, 73, 100, '!');
+            addButton("TiltedSwords (7).bmp", 250, 400, 73, 100, '!');
+            addButton("TiltedSwords (8).bmp", 350, 400, 73, 100, '!');
+            addButton("TiltedSwords (9).bmp", 50, 550, 73, 100, '!');
+            addButton("TiltedSwords (10).bmp", 150, 550, 73, 100, '!');
+            addButton("TiltedSwords (11).bmp", 250, 550, 73, 100, '!');
+            addButton("TiltedSwords (12).bmp", 350, 550, 73, 100, '!');
+            addButton("Start.bmp", 430, 580, 240, 125, '!');
+
+        }
+        if(flag == true){
+
+            if(uit ->isPressedStatus(1)){
+                isSelected = true;
+                std::cout << "button one" << std::endl;
+                sword = 1;
+            }
+            else if(uit ->isPressedStatus(2)){
+                isSelected = true;
+                std::cout << "button two" << std::endl;
+                sword = 2;
+            }
+            else if(uit ->isPressedStatus(3)){
+                isSelected = true;
+                std::cout << "button three" << std::endl;
+                sword = 3;
+            }
+            else if(uit ->isPressedStatus(4)){
+                isSelected = true;
+                std::cout << "button four" << std::endl;
+                sword = 4;
+            }
+            else if(uit ->isPressedStatus(5)){
+                isSelected = true;
+                std::cout << "button five" << std::endl;
+                sword = 5;
+            }
+            else if(uit ->isPressedStatus(6)){
+                isSelected = true;
+                std::cout << "button six" << std::endl;
+                sword = 6;
+            }
+            else if(uit ->isPressedStatus(7)){
+                isSelected = true;
+                std::cout << "button seven" << std::endl;
+                sword = 7;
+            }
+            else if(uit ->isPressedStatus(8)){
+                isSelected = true;
+                std::cout << "button eight" << std::endl;
+                sword = 8;
+            }
+            else if(uit ->isPressedStatus(9)){
+                isSelected = true;
+                std::cout << "button nine" << std::endl;
+                sword = 9;
+            }
+            else if(uit ->isPressedStatus(10)){
+                isSelected = true;
+                std::cout << "button ten" << std::endl;
+                sword = 10;
+            }
+            else if(uit ->isPressedStatus(11)){
+                isSelected = true;
+                std::cout << "button eleven" << std::endl;
+                sword = 11;
+            }
+            else if(uit ->isPressedStatus(12)){
+                isSelected = true;
+                std::cout << "button twelve" << std::endl;
+                sword = 12;
+            }
+
+            else if(isSelected == true){
+                if(uit ->isPressedStatus(13)){
+                    std::cout<<"button thirteen"<<std::endl;
+                    isRunning = false;
+                }
+            }
+        
         }
         render();
     }
@@ -62,4 +153,9 @@ void Menu::addButton(const char *path, int pos_x, int pos_y, int width, int heig
     SDL_FreeSurface(temp_sur);
     uit->setMouseResponse(count, mResp);
     count++;
+}
+
+int Menu::getSword()
+{
+    return sword;
 }

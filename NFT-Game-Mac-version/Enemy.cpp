@@ -15,8 +15,9 @@ void Enemy::handle_events(SDL_Event const& e)
 	// does not handle events, as this is non playable character
 }
 
-void Enemy::reduceHealth()
+void Enemy::reduceHealth(HollowKnight *hk)
 {
-	health -= 1;
+	int sword = hk->getSword();
+	health -= sword;
 }
 

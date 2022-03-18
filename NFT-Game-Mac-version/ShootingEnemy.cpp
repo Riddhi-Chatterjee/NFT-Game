@@ -1,7 +1,7 @@
 #include "ShootingEnemy.h"
 
 ShootingEnemy::ShootingEnemy(Vec2D Epos, Object *Target)
-	: shEnemyR("shEnemyRight.bmp", 1, 1), shEnemyL("shEnemyLeft.bmp", 1 ,1), Enemy(Epos, 1, 53, 85, 1, 4)
+	: shEnemyR("shEnemyRight.bmp", 1, 1), shEnemyL("shEnemyLeft.bmp", 1 ,1), Enemy(Epos, 1, 53, 85, 1, 24)
 {
 	m_Position.x = 0;
 	m_Position.y = 0;

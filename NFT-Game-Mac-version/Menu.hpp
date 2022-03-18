@@ -11,6 +11,7 @@ private:
     class UITracker *uit;
     bool isRunning;
     int count;
+    int sword;
 
 
 public:
@@ -18,4 +19,5 @@ public:
     int Start();
     void render();
     void addButton(const char *path, int pos_x, int pos_y, int width, int height, char mouseResponse);
+    int getSword();
 };

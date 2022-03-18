@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "HollowKnight.h"
 class Enemy :
     public Object
 {
@@ -14,6 +15,6 @@ public:
 	virtual void draw(SDL_Surface* surface, int x, int y) = 0;
 	bool isGravity() { return true; }
 	bool isCollideable() const { return true; };
-	void reduceHealth();
+	void reduceHealth(HollowKnight *hk);
 };
 

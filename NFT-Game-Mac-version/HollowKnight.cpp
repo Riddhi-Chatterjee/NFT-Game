@@ -363,6 +363,37 @@ Health * HollowKnight::getHealth()
 	return health;
 }
 
+void HollowKnight::setSword(int swordType)
+{
+	sword = swordType;
+	if(sword>=1 && sword<=5)
+	{
+		health->setCurrentHealth(5);
+		health->setHealthIncDuration(10);
+	}
+	else if(sword>=6 && sword<=9)
+	{
+		health->setCurrentHealth(4);
+		health ->setHealthIncDuration(20);
+		//std::cout<<"SWORD6TO9"<<std::endl;
+	}
+	else if(sword>=10 && sword<=11)
+	{
+		health->setCurrentHealth(3);
+		health ->setHealthIncDuration(25);
+	}
+	else
+	{
+		health->setCurrentHealth(2);
+		health -> setHealthIncDuration(35);
+	}
+}
+
+int HollowKnight::getSword()
+{
+	return sword;
+}
+
 int HollowKnight::getScore()
 {
 	return score;

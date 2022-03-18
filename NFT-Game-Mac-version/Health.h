@@ -29,6 +29,8 @@ public:
 	void increaseHealth();
 	int decreaseHealth();
 	int getHealth();
+	void setCurrentHealth(int currHealth);
+	void setHealthIncDuration(int duration);
 	bool flag;
 
 	private:

@@ -20,6 +20,7 @@ private:
 	Attack* att;
 	SDL_Rect m_Position;
 	double m_x, m_y;
+	int sword;
 
 	double m_MovingRight;
 
@@ -62,6 +63,8 @@ public:
 	void setAttack();
 	void increaseScore();
 	Health* getHealth();
+	void setSword(int swordType);
+	int getSword();
 	int getScore();
 };
 

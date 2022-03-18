@@ -36,6 +36,7 @@ Application::Application() : ph(), pakka("pakka.bmp", 1080, 720), gameOver("GAME
     SDL_DestroyRenderer(renderer);
 
 
+
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         printf("error initializing SDL: %s\n", SDL_GetError());
     }
@@ -68,6 +69,11 @@ Application::Application() : ph(), pakka("pakka.bmp", 1080, 720), gameOver("GAME
 
     // Creating the main character
     hk = new HollowKnight(health, scoreCounter);
+    hk->setSword(menu->getSword());
+    //std::cout<<"SWORD = "<<menu->getSword()<<std::endl;
+    delete menu;
+    menu = NULL;
+
     ec = new EnemyController(hk);
     drawables.push_back(health);
     drawables.push_back(scoreCounter);
@@ -155,8 +161,8 @@ void Application::loop()
                     break;
             }
         }
-
-        if(timepassed >= 285)
+        
+        if(timepassed >= 260)
         {
             timepassed = 0.0;
             ec->modifyEnemies(enemies);
@@ -176,7 +182,7 @@ void Application::update(double delta_time)
             if (ph.detectCollision(*hk->getAttack(), *obj)) {
                 Enemy* em = dynamic_cast<Enemy*> (obj);
                 if (em) {
-                    em->reduceHealth();
+                    em->reduceHealth(hk);
                     delete hk->getAttack();
                     hk->setAttack();
                     if (hk->isFacingRight) hk->vel.x -= 15;
