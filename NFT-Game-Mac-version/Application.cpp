@@ -24,7 +24,16 @@ Application::Application() : ph(), pakka("pakka.bmp", 1080, 720), gameOver("GAME
     }
 
     Menu *menu = new Menu(window, renderer);
-    menu->Start();
+    if(menu->Start() == 1)
+    {
+        SDL_DestroyWindow(window);
+        SDL_DestroyRenderer(renderer);
+        delete menu;
+        menu = NULL;
+        exit(0);
+    }
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
 
 
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {

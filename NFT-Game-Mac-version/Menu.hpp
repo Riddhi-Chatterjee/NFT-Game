@@ -10,10 +10,12 @@ private:
     SDL_Renderer *renderer;
     class UITracker *uit;
     bool isRunning;
+    int count;
 
 
 public:
     Menu(SDL_Window *window, SDL_Renderer *renderer);
-    void Start();
+    int Start();
     void render();
+    void addButton(const char *path, int pos_x, int pos_y, int width, int height, char mouseResponse);
 };

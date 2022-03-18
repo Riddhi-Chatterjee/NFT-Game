@@ -20,3 +20,4 @@ Highest Score for the game : 0
 Highest Score for the game : 1
 Highest Score for the game : 0
 Highest Score for the game : 0
+Highest Score for the game : 0
