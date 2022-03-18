@@ -1,11 +1,35 @@
 #include "Application.h"
+#include "Menu.hpp"
 
 Application::Application() : ph(), pakka("pakka.bmp", 1080, 720), gameOver("GAME_OVER.bmp", 1080, 720)
 {
+    int error_code = SDL_Init(SDL_INIT_EVERYTHING);
+    if (error_code)
+    {
+        std::cout << "Init Failed\nERROR CODE: " << error_code << "\n";
+        return;
+    };
+    int width, height;
+    SDL_Window *window = SDL_CreateWindow("NFT Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1080, 720, 0);
+    if (!window)
+    {
+        std::cout << "Window Creation Failed\n";
+        return;
+    }
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC);
+    if (!renderer)
+    {
+        std::cout << "Renderer Creation Failed\n";
+        return;
+    }
+
+    Menu *menu = new Menu(window, renderer);
+    menu->Start();
+
+
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         printf("error initializing SDL: %s\n", SDL_GetError());
     }
-
     m_Window = SDL_CreateWindow("GAME", // creates a window
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
@@ -25,6 +49,8 @@ Application::Application() : ph(), pakka("pakka.bmp", 1080, 720), gameOver("GAME
         std::cout << "SDLError: " << SDL_GetError() << std::endl;
         return;
     }
+
+
 
     filecount = 0 ;
     filename = "HighestScores.txt";

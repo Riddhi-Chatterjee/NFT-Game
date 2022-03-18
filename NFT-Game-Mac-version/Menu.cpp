@@ -14,11 +14,9 @@ Menu::Menu(SDL_Window *window, SDL_Renderer *renderer)
 }
 void Menu::Start()
 {
-    SDL_DisplayMode DM;
-    SDL_GetCurrentDisplayMode(0, &DM);
     SDL_Surface *temp_sur = SDL_LoadBMP("Start.bmp");
     SDL_Texture *temp_tex = SDL_CreateTextureFromSurface(renderer, temp_sur);
-    uit->addLabel(DM.w / 2 - 150, DM.h * 3 / 4, 240, 125, renderer, temp_tex);
+    uit->addLabel(420, 450, 240, 125, renderer, temp_tex);
     SDL_FreeSurface(temp_sur);
     uit->setMouseResponse(0, "!");
     while (isRunning)
@@ -39,8 +37,6 @@ void Menu::Start()
         if (inputProcessResponse[0] == '!')
         {
             isRunning = false;
-            Application app;
-            app.loop();
         }
         render();
     }
