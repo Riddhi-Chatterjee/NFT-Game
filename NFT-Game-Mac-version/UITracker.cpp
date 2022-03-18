@@ -9,11 +9,13 @@ UITracker::UITracker(SDL_Renderer *renderer)
 void UITracker::addLabel(int pos_x, int pos_y, int width, int height, SDL_Renderer *renderer, std::string str, int fill[], Uint8 font_colour[], int font_size)
 {
     inElementArr.push_back(false);
+    isPressed.push_back(false);
     UIList.push_back(new Label(pos_x, pos_y, width, height, renderer, fill, font_colour, str, font_size));
 }
 void UITracker::addLabel(int pos_x, int pos_y, int width, int height, SDL_Renderer *renderer, SDL_Texture *texture)
 {
     inElementArr.push_back(false);
+    isPressed.push_back(false);
     UIList.push_back(new Label(pos_x, pos_y, width, height, renderer, texture));
 }
 void UITracker::setMouseResponse(int i, std::string response)
@@ -35,22 +37,34 @@ void UITracker::Update()
         inElementArr[i] = UIList[i]->inElement(x, y);
     }
 }
-std::string UITracker::processInput(SDL_Event event)
+void UITracker::processInput(SDL_Event event)
 {
     Update();
     std::string output = "";
     for (int i = 0; i < UIList.size(); i++)
     {
-        output += UIList[i]->processEvent(x, y, buttonState);
+        output = "";
+        if(inElementArr[i])
+        {
+            output += UIList[i]->processEvent(x, y, buttonState);
+        }
         output += "~ ";
         output += UIList[i]->processEvent(event);
         output += "~ ";
+        if(output[0] == UIList[i]->getMouseResponse()[0])
+        {
+            isPressed[i] = true;
+        }
+        else
+        {
+            isPressed[i] = false;
+        }
     }
-    return output;
 }
 void UITracker::addUIElement(class UIElement *uie)
 {
     inElementArr.push_back(false);
+    isPressed.push_back(false);
     UIList.push_back(uie);
 }
 std::vector<bool> UITracker::getInElementArr()
@@ -63,4 +77,12 @@ Uint8 UITracker::getButtonState()
 }
 UITracker::~UITracker()
 {
+}
+bool UITracker::isPressedStatus(int index)
+{
+    if(isPressed[index])
+    {
+        return true;
+    }
+    return false;
 }

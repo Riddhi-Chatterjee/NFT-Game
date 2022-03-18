@@ -10,5 +10,6 @@ public:
     virtual std::string processEvent(int x, int y, int buttonState) = 0;
     virtual std::string processEvent(SDL_Event event) = 0;
     virtual void setMouseResponse(std::string mouseResponse) = 0;
+    virtual std::string getMouseResponse() = 0;
 };
 #endif

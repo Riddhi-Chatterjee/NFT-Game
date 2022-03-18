@@ -25,5 +25,6 @@ public:
     void makeInvisible();
     void makeVisible();
     void setMouseResponse(std::string mouseResponse) override;
+    std::string getMouseResponse();
 };
 #endif

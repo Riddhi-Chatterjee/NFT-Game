@@ -23,7 +23,7 @@ void Menu::Start()
     {
         SDL_Event event;
         SDL_PollEvent(&event);
-        std::string inputProcessResponse = uit->processInput(event);
+        uit->processInput(event);
         switch (event.type)
         {
         case SDL_QUIT:
@@ -34,7 +34,7 @@ void Menu::Start()
                 isRunning = false;
             break;
         }
-        if (inputProcessResponse[0] == '!')
+        if(uit->isPressedStatus(0))
         {
             isRunning = false;
         }

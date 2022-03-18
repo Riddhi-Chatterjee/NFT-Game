@@ -10,6 +10,7 @@ private:
     std::vector<class UIElement *> UIList;
     SDL_Renderer *renderer;
     std::vector<bool> inElementArr;
+    std::vector<bool> isPressed;
 
 public:
     UITracker(SDL_Renderer *renderer);
@@ -19,8 +20,9 @@ public:
     void addUIElement(class UIElement *uie);
     void render();
     void Update();
-    std::string processInput(SDL_Event event);
+    void processInput(SDL_Event event);
     ~UITracker();
     std::vector<bool> getInElementArr();
     Uint8 getButtonState();
+    bool isPressedStatus(int index);
 };

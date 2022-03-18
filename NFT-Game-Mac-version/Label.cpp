@@ -67,3 +67,7 @@ void Label::setMouseResponse(std::string mouseResponse)
 {
     this->mouseResponse = mouseResponse;
 }
+std::string Label::getMouseResponse()
+{
+    return mouseResponse;
+}
