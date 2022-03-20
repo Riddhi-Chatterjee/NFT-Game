@@ -162,7 +162,8 @@ void Application::loop()
             }
         }
         
-        if(timepassed >= 260)
+        int score = hk->getScore();
+        if(timepassed >= std::max(220, 260-(score/2)))
         {
             timepassed = 0.0;
             ec->modifyEnemies(enemies);
