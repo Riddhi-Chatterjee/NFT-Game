@@ -3,7 +3,6 @@
 #include "Application.h"
 #include "Menu.hpp"
 
-
 int main(int argc, char* argv[])
 {
     Application app;
